@@ -1,0 +1,20 @@
+package main
+
+import (
+    "fmt"
+    "math"
+)
+const y = 0x200
+
+func main() {
+    fmt.Println("test-case--01")
+    println(y)
+    
+
+    fmt.Println("test-case--02")
+    a, b, c := 100, 0144, 0x64
+    fmt.Println(a, b, c)
+    fmt.Println("0b%b, %o, %x\n", a, a, a)
+    fmt.Println(math.MinInt8, math.MaxInt8)
+
+}
