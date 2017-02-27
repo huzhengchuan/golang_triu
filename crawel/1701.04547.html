@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0032)https://arxiv.org/abs/1701.04547 -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an
+  Approximate Probabilistic Context (Extended Version)</title>
+<link rel="shortcut icon" href="https://arxiv.org/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" media="screen" href="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/arXiv.css">
+<meta name="citation_title" content="On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)">
+<meta name="citation_author" content="Bian, Gaoang">
+<meta name="citation_author" content="Abate, Alessandro">
+<meta name="citation_date" content="2017/01/17">
+<meta name="citation_online_date" content="2017/01/20">
+<meta name="citation_pdf_url" content="http://arxiv.org/pdf/1701.04547">
+<meta name="citation_arxiv_id" content="1701.04547">
+<script type="text/javascript" async="" defer="" src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/piwik.js.下载"></script><script src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/mathjaxToggle.min.js.下载" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/slider.css">
+<script language="javascript" src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/jquery-latest.min.js.下载"></script>
+<script language="javascript" src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/donate.js.下载"></script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(["setDomains", ["*.arxiv.org"]]);
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function()
+{ var u="//webanalytics.library.cornell.edu/"; _paq.push(['setTrackerUrl', u+'piwik.php']); _paq.push(['setSiteId', 538]); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s); }
+)();
+</script>
+<!-- End Piwik Code -->
+
+
+<script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({
+  extensions: ['tex2jax.js', 'TeX/AMSmath.js','TeX/AMSsymbols.js', 'TeX/noErrors.js'],
+  jax: ['input/TeX','output/HTML-CSS'],
+  tex2jax: {
+    inlineMath: [['$','$']],
+    processEscapes: true,
+    ignoreClass: 'authors|sub_box|abs|metadata|submission-history|extra-services|dateline|leftcolumn|mlabel|mvalue|ignore_mathjax',
+    processClass: 'mathjax',
+  },
+  TeX: {
+    noErrors: {
+      inlineDelimiters: ['$','$'],
+      multiLine: false,
+      style: {
+        'font-size': '100%',
+        'color': 'black',
+        'padding': '0px 0px',
+        'border': ''
+      }
+    }
+  }
+});</script><script type="text/javascript" src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/MathJax.js.下载"></script><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style></head>
+<body class="with-cu-identity"><div id="MathJax_Message" style="display: none;"></div>
+<div class="slider-wrapper">
+<a class="close-slider" href="https://arxiv.org/abs/1701.04547#"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/close-slider.png"></a>
+<div class="copy-donation">
+<h1>Donate to arXiv</h1>
+<p>
+Please join the <a href="https://simonsfoundation.org/">Simons Foundation</a> and our 
+generous <a href="https://confluence.cornell.edu/x/ALlRF">member organizations 
+and research labs</a> in supporting arXiv during our online giving campaign 
+Feb 26-Mar 4. One hundred percent of your contribution will fund improvements 
+and new initiatives to benefit arXiv's global scientific community.
+</p>
+<p><a href="https://arxiv.org/help/support/faq.html#7C">Donation FAQ</a></p>
+</div>
+<div class="amount-donation">
+<div class="wrapper">
+<div class="donate-cta"><a class="banner_link" href="https://goo.gl/QIgRpr"><b>DONATE</b></a><p>[secure site, no need to create account]</p></div>
+</div>
+</div>
+</div>
+
+<noscript>&lt;img src="//webanalytics.library.cornell.edu/piwik.php?idsite=538&amp;rec=1" style="border:0;" alt="" /&gt;</noscript>
+
+<div id="cu-identity" style="display: none;">
+<div id="cu-logo">
+<a id="insignia-link" href="http://www.cornell.edu/"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/cul_signature_unstyled.gif" alt="Cornell University" width="283" height="76" border="0"></a>
+<div id="unit-signature-links">
+<a id="cornell-link" href="http://www.cornell.edu/">Cornell University</a>
+<a id="unit-link" href="http://www.library.cornell.edu/">Library</a>
+</div>
+</div>
+<div id="support-ack">
+<a href="https://confluence.cornell.edu/x/ALlRF">We gratefully acknowledge support from<br>the Simons Foundation<br> and member institutions</a>
+</div>
+</div>
+<div id="header" class="cs" style="display: none;">
+<h1><a href="https://arxiv.org/">arXiv.org</a> &gt; <a href="https://arxiv.org/list/cs/recent">cs</a> &gt; arXiv:1701.04547</h1>
+
+<div id="search">
+<form id="search-arxiv" method="post" action="https://arxiv.org/search">
+                
+<div class="wrapper-search-arxiv">
+<input class="keyword-field" type="text" name="query" placeholder="Search or Article ID inside arXiv">
+
+<div class="filter-field">
+ <select name="searchtype">
+<option value="all" selected="selected">All papers</option>
+<option value="ti">Titles</option>
+<option value="au">Authors</option>
+<option value="abs">Abstracts</option>
+<option value="ft">Full text</option>
+<option value="help">Help pages</option>
+</select>
+</div>
+<input class="btn-search-arxiv" value="" type="submit">
+<div class="links">(<a href="https://arxiv.org/help">Help</a> | <a href="https://arxiv.org/find">Advanced search</a>)</div>
+</div>
+</form>
+
+<form id="search-semantic" method="get" action="https://www.semanticscholar.org/search" onsubmit="_paq.push([&#39;trackGoal&#39;, 6])">
+<div class="wrapper-search-semantic">
+<input class="keyword-field" type="text" name="q" placeholder="Broaden your search using">
+<input class="btn-search-semantic" value="" type="submit">
+</div>
+</form>
+</div>
+</div> 
+
+<div id="content">
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+    <rdf:Description
+        rdf:about="http://arxiv.org/abs/1701.04547"
+        dc:identifier="http://arxiv.org/abs/1701.04547"
+        dc:title="On the Relationship between Bisimulation and Trace Equivalence in an
+  Approximate Probabilistic Context (Extended Version)"
+        trackback:ping="http://arxiv.org/trackback/1701.04547" />
+    </rdf:RDF>
+-->
+
+<div id="abs">
+<div class="extra-services">
+
+<div class="full-text">
+<span class="descriptor">Full-text links:</span>
+<h2>Download:</h2>
+<ul>
+<li><a href="https://arxiv.org/pdf/1701.04547" accesskey="f">PDF</a></li>
+<li><a href="https://arxiv.org/format/1701.04547">Other formats</a></li>
+</ul>
+<div class="abs-license">(<a href="http://arxiv.org/licenses/nonexclusive-distrib/1.0/" title="Rights to this article">license</a>)</div>
+</div><!--end full-text-->
+
+<div class="browse">
+<h3>Current browse context:</h3>
+<div class="current">cs.LO</div>
+<div class="prevnext"><span class="arrow"><a href="http://arxiv.org/prevnext?site=arxiv.org&amp;id=1701.04547&amp;context=cs.LO&amp;function=prev" accesskey="p" title="previous in cs.LO (accesskey p)">&lt;&nbsp;prev</a></span>&nbsp;|&nbsp;<span class="arrow"><a href="http://arxiv.org/prevnext?site=arxiv.org&amp;id=1701.04547&amp;context=cs.LO&amp;function=next" accesskey="n" title="next in cs.LO (accesskey n)">next&nbsp;&gt;</a></span>
+<br></div>
+<div class="list"><a href="https://arxiv.org/list/cs.LO/new">new</a>&nbsp;| <a href="https://arxiv.org/list/cs.LO/recent">recent</a>&nbsp;| <a href="https://arxiv.org/list/cs.LO/1701">1701</a></div><h3>Change to browse by:</h3><div class="switch">
+<a href="https://arxiv.org/abs/1701.04547?context=cs">cs</a>
+</div>
+
+</div>
+<div class="extra-ref-cite">
+<h3>References &amp; Citations</h3><ul><li><a href="http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1701.04547">NASA ADS</a></li>
+</ul>
+
+</div>
+<div class="dblp">
+<h3><a href="http://www.informatik.uni-trier.de/~ley/db/">DBLP</a> - CS Bibliography</h3><div class="list">
+<a href="http://www.informatik.uni-trier.de/~ley/db/journals/corr/corr1701.html#BianA17" title="listing on DBLP">listing</a> | <a href="http://dblp.uni-trier.de/rec/bibtex/journals/corr/BianA17" title="DBLP bibtex record">bibtex</a>
+</div>
+<div class="list">
+<a href="http://dblp.uni-trier.de/search/author?author=Gaoang%20Bian" title="DBLP author search">Gaoang Bian</a><br>
+<a href="http://dblp.uni-trier.de/search/author?author=Alessandro%20Abate" title="DBLP author search">Alessandro Abate</a><br>
+</div>
+
+</div>
+<div class="bookmarks">
+<div class="what-is-this">
+<h3>Bookmark</h3> (<a href="https://arxiv.org/help/social_bookmarking">what is this?</a>)
+</div>
+<a href="https://arxiv.org/ct?url=http%3A%2F%2Fwww.citeulike.org%2Fposturl%3Furl%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547%26title%3DOn%2520the%2520Relationship%2520between%2520Bisimulation%2520and%2520Trace%2520Equivalence%2520in%2520an%250A%2520%2520Approximate%2520Probabilistic%2520Context%2520%2528Extended%2520Version%2529%26authors%3D&amp;v=5b2cb24a" title="Bookmark on CiteULike"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/citeulike.png" alt="CiteULike logo"></a>
+<a href="https://arxiv.org/ct?url=http%3A%2F%2Fwww.bibsonomy.org%2FBibtexHandler%3FrequTask%3Dupload%26url%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547%26description%3DOn%2520the%2520Relationship%2520between%2520Bisimulation%2520and%2520Trace%2520Equivalence%2520in%2520an%250A%2520%2520Approximate%2520Probabilistic%2520Context%2520%2528Extended%2520Version%2529&amp;v=a560b0c7" title="Bookmark on BibSonomy"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/bibsonomy.png" alt="BibSonomy logo"></a>
+<a href="https://arxiv.org/ct?url=https%3A%2F%2Fwww.mendeley.com%2Fimport%2F%3Furl%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547&amp;v=840c0243" title="Bookmark on Mendeley"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/mendeley.png" alt="Mendeley logo"></a>
+<a href="https://arxiv.org/ct?url=https%3A%2F%2Fdel.icio.us%2Fpost%3Furl%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547%26description%3DOn%2520the%2520Relationship%2520between%2520Bisimulation%2520and%2520Trace%2520Equivalence%2520in%2520an%250A%2520%2520Approximate%2520Probabilistic%2520Context%2520%2528Extended%2520Version%2529&amp;v=7e41e10d" title="Bookmark on del.icio.us"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/delicious.png" alt="del.icio.us logo"></a>
+<a href="https://arxiv.org/ct?url=https%3A%2F%2Fdigg.com%2Fsubmit%3Furl%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547%26title%3DOn%2520the%2520Relationship%2520between%2520Bisimulation%2520and%2520Trace%2520Equivalence%2520in%2520an%250A%2520%2520Approximate%2520Probabilistic%2520Context%2520%2528Extended%2520Version%2529&amp;v=aad87f77" title="Bookmark on Digg"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/digg.png" alt="Digg logo"></a>
+<a href="https://arxiv.org/ct?url=https%3A%2F%2Freddit.com%2Fsubmit%3Furl%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547%26title%3DOn%2520the%2520Relationship%2520between%2520Bisimulation%2520and%2520Trace%2520Equivalence%2520in%2520an%250A%2520%2520Approximate%2520Probabilistic%2520Context%2520%2528Extended%2520Version%2529&amp;v=d33eea87" title="Bookmark on Reddit"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/reddit.png" alt="Reddit logo"></a>
+<a href="https://arxiv.org/ct?url=http%3A%2F%2Fsciencewise.info%2Fbookmarks%2Fadd%3Furl%3Dhttp%3A%2F%2Farxiv.org%2Fabs%2F1701.04547&amp;v=5fd22628" title="Bookmark on ScienceWISE"><img src="./[1701.04547] On the Relationship between Bisimulation and Trace Equivalence in an Approximate Probabilistic Context (Extended Version)_files/sciencewise.png" alt="ScienceWISE logo"></a>
+
+</div>
+</div><!--end extra-services-->
+
+<div class="leftcolumn">
+<div class="subheader">
+<h1>Computer Science &gt; Logic in Computer Science</h1>
+</div>
+<h1 class="title mathjax"><span class="descriptor">Title:</span>
+On the Relationship between Bisimulation and Trace Equivalence in an  Approximate Probabilistic Context (Extended Version)</h1>
+<div class="authors"><span class="descriptor">Authors:</span>
+<a href="https://arxiv.org/find/cs/1/au:+Bian_G/0/1/0/all/0/1">Gaoang Bian</a>, 
+<a href="https://arxiv.org/find/cs/1/au:+Abate_A/0/1/0/all/0/1">Alessandro Abate</a></div>
+<div class="dateline">(Submitted on 17 Jan 2017 (<a href="https://arxiv.org/abs/1701.04547v1">v1</a>), last revised 20 Jan 2017 (this version, v2))</div>
+<blockquote class="abstract mathjax">
+<span class="descriptor">Abstract:</span> This work introduces a notion of approximate probabilistic trace equivalence
+for labelled Markov chains, and relates this new concept to the known notion of
+approximate probabilistic bisimulation. In particular this work shows that the
+latter notion induces a tight upper bound on the approximation between
+finite-horizon traces, as expressed by a total variation distance. As such,
+this work extends corresponding results for exact notions and analogous results
+for non-probabilistic models. This bound can be employed to relate the
+closeness in satisfaction probabilities over bounded linear-time properties,
+and allows for probabilistic model checking of concrete models via
+abstractions. The contribution focuses on both finite-state and
+uncountable-state labelled Markov chains, and claims two main applications:
+firstly, it allows an upper bound on the trace distance to be decided for
+finite state systems; secondly, it can be used to synthesise discrete
+approximations to continuous-state models with arbitrary precision.
+</blockquote>
+<!--CONTEXT-->
+<div class="metatable">
+<table summary="Additional metadata">
+<tbody><tr>
+<td class="tablecell label">Subjects:
+</td>
+<td class="tablecell subjects"><span class="primary-subject">Logic in Computer Science (cs.LO)</span></td>
+</tr>
+<tr>
+<td class="tablecell label">
+Cite&nbsp;as:
+</td>
+<td class="tablecell arxivid"><a href="https://arxiv.org/abs/1701.04547">arXiv:1701.04547</a> [cs.LO]</td>
+</tr>
+<tr>
+<td class="tablecell label">&nbsp;</td>
+<td class="tablecell arxividv">(or <span class="arxivid"><a href="https://arxiv.org/abs/1701.04547v2">arXiv:1701.04547v2</a> [cs.LO]</span> for this version)</td>
+</tr>
+</tbody></table>
+</div>
+<div class="submission-history">
+<h2>Submission history</h2>
+From: Gaoang Bian [<a href="https://arxiv.org/show-email/41c4e6bb/1701.04547">view email</a>]
+<br>
+<b><a href="https://arxiv.org/abs/1701.04547v1">[v1]</a></b> Tue, 17 Jan 2017 06:55:57 GMT  (2475kb,D)<br>
+<b>[v2]</b> Fri, 20 Jan 2017 08:25:54 GMT  (2475kb,D)<br>
+</div>
+<div class="endorsers"><a href="http://arxiv.org/auth/show-endorsers/1701.04547">Which authors of this paper are endorsers?</a> | <a id="mathjax_toggle" href="javascript:setMathjaxCookie()">Disable MathJax</a> (<a href="https://arxiv.org/help/mathjax/">What is MathJax?</a>)</div><script type="text/javascript" language="javascript">mathjaxToggle();</script>
+</div><!--end leftcolumn-->
+</div><!--end abs-->
+</div>
+<div id="footer">
+<p>Link back to: <a href="http://arxiv.org/">arXiv</a>, <a href="https://arxiv.org/form">form interface</a>, <a href="https://arxiv.org/help/contact">contact</a>.</p>
+</div>
+
+
+</body></html>
