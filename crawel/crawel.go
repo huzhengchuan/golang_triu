@@ -5,9 +5,107 @@ import (
         "log"
         "net/http"
         "os"
+	"math/rand"
+	"time"
+	"strconv"
+    	"regexp"
+	"bufio"
+        "io"
+	"strings"
 )
 
-func getUrlBody(url string) {
+
+
+func parseUrl(file string) map[string]string {
+    
+    var firstLevelMap map[string]string
+
+    firstLevelMap = make(map[string]string)
+
+    inputFile, inputError := os.Open(file)
+    if inputError != nil {
+        fmt.Println("An error occurred on opening the inputfile")
+        return firstLevelMap
+    }
+   
+    defer inputFile.Close()
+
+    inputReader := bufio.NewReader(inputFile)
+    lineCounter := 0
+    for {
+    
+        inputString, readerError := inputReader.ReadString('\n')
+        if readerError == io.EOF {
+            break        
+        }
+        lineCounter++
+        //fmt.Printf("%d:%s", lineCounter, inputString)
+
+        //var hrefRegExp = regexp.MustCompile(".*<a class=\"research-area-pubs maia-button\" href=\"(.*?)\"(.*?)>.*?</a>.*?")
+        var hrefRegExp = regexp.MustCompile(".*\"(/pubs/.*?)\".*")
+        match := hrefRegExp.FindStringSubmatch(inputString)
+        if match != nil {
+            for i, v := range match {
+                if i == 1 {
+                    //fmt.Println("[", i, "]-", v)
+                    url := "https://research.google.com" + v
+                    urlSplit := strings.Split(url, "/")
+                    firstLevelMap[strings.Split(urlSplit[len(urlSplit) - 1], ".")[0]] = url
+                }
+            }
+        }
+    }
+    return firstLevelMap
+}
+
+
+func parseUrlTwoLevel(file string) []string {
+    
+
+    pdfSlice := make([]string, 0)
+
+    inputFile, inputError := os.Open(file)
+    if inputError != nil {
+        fmt.Println("An error occurred on opening the inputfile")
+        return pdfSlice
+    }
+   
+    defer inputFile.Close()
+
+    inputReader := bufio.NewReader(inputFile)
+    lineCounter := 0
+    for {
+    
+        inputString, readerError := inputReader.ReadString('\n')
+        if readerError == io.EOF {
+            break        
+        }
+        lineCounter++
+        //fmt.Printf("%d:%s", lineCounter, inputString)
+
+        var hrefRegExp = regexp.MustCompile(".*\"(.*?pdf)\".*?")
+        match := hrefRegExp.FindStringSubmatch(inputString)
+        if match != nil {
+            for i, v := range match {
+                if i == 1 {
+                    if strings.HasPrefix(v, "http") {
+                        pdfSlice = append(pdfSlice, v)
+                    }else if strings.HasPrefix(v, "https") {
+                        pdfSlice = append(pdfSlice, v)
+                    }else if strings.HasPrefix(v, "www") {
+                        pdfSlice = append(pdfSlice, v)
+                    }else {
+                        url := "https://research.google.com" + v
+                        pdfSlice = append(pdfSlice, url)
+                    }
+                }
+            }
+        }
+    }
+    return pdfSlice
+}
+
+func getUrlBody(url string) string{
     
     resp, err := http.Get(url)
     if err != nil {
@@ -18,16 +116,18 @@ func getUrlBody(url string) {
     defer resp.Body.Close()
 
     if resp.StatusCode == http.StatusOK {
-        fmt.Priintln(resp.StatusCode)
+        fmt.Println(resp.StatusCode)
     }
 
     buf := make([]byte, 65535)
     
-    tmpUrlFile := "/tmp/"
+    randTool := rand.New(rand.NewSource(time.Now().UnixNano()))
+
+    tmpUrlFile := "/tmp/" + strconv.Itoa(randTool.Intn(10000))
     f, err1 := os.OpenFile(tmpUrlFile, os.O_RDWR|os.O_CREATE|os.O_APPEND,os.ModePerm)
     if err1 != nil {
         panic(err1)
-        return
+        return ""
     }
     
     defer f.Close()
@@ -40,89 +140,32 @@ func getUrlBody(url string) {
 
         f.WriteString(string(buf[:n]))
     }
+    return tmpUrlFile
 }
 
-
-
-type Fetcher interface {
-    // Fetch 返回 URL 的 body 内容，并且将在这个页面上找到的 URL 放到一个 slice 中。
-    Fetch(url string) (body string, urls []string, err error)
-}
-
-// Crawl 使用 fetcher 从某个 URL 开始递归的爬取页面，直到达到最大深度。
-func Crawl(url string, depth int, fetcher Fetcher) {
-    // TODO: 并行的抓取 URL。
-    // TODO: 不重复抓取页面。
-    // 下面并没有实现上面两种情况：
-    if depth <= 0 {
-        return
+func crawl(url string) {
+    tmpFile := getUrlBody(url)
+    fmt.Println(tmpFile)
+    firstLevelMap := parseUrl(tmpFile)
+    
+    twoLevelTempFile := make([]string, 0)
+    for _, v := range firstLevelMap {
+    //    fmt.Println(k, v)
+	twoLevelTempFile = append(twoLevelTempFile, getUrlBody(v))
+    }  
+	
+    for _, tempFile := range twoLevelTempFile {
+	fmt.Println(tempFile)
+    	pdfSlice := parseUrlTwoLevel(tempFile)	
+    	for k, v := range pdfSlice {
+        	fmt.Println(k, v)
+    	}
+	os.Remove(tempFile)
     }
-    body, urls, err := fetcher.Fetch(url)
-        if err != nil {
-            fmt.Println(err)
-                return
-        }
-    fmt.Printf("found: %s %q\n", url, body)
-        for _, u := range urls {
-            Crawl(u, depth-1, fetcher)
-        }
-    return
 }
 
 func main() {
-    Crawl("http://golang.org/", 4, fetcher)
+    crawl("https://research.google.com/pubs/papers.html")
 }
 
 
-// fakeFetcher 是返回若干结果的 Fetcher。
-type fakeFetcher map[string]*fakeResult
-
-type fakeResult struct {
-    body string
-    urls []string
-}
-
-
-func (f *fakeFetcher) Fetch(url string) (string, []string, error) {
-    
-
-
-    if res, ok := (*f)[url]; ok {
-        return res.body, res.urls, nil
-    }
-    return "", nil, fmt.Errorf("not found: %s", url)
-}
-
-// fetcher 是填充后的 fakeFetcher。
-var fetcher = &fakeFetcher{
-    "http://golang.org/": &fakeResult{
-        "The Go Programming Language",
-            []string{
-                "http://golang.org/pkg/",
-                "http://golang.org/cmd/",
-            },
-    },
-        "http://golang.org/pkg/": &fakeResult{
-            "Packages",
-            []string{
-                "http://golang.org/",
-                "http://golang.org/cmd/",
-                "http://golang.org/pkg/fmt/",
-                "http://golang.org/pkg/os/",
-            },
-        },
-        "http://golang.org/pkg/fmt/": &fakeResult{
-            "Package fmt",
-            []string{
-                "http://golang.org/",
-                "http://golang.org/pkg/",
-            },
-        },
-        "http://golang.org/pkg/os/": &fakeResult{
-            "Package os",
-            []string{
-                "http://golang.org/",
-                "http://golang.org/pkg/",
-            },
-        },
-}
