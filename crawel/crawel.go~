@@ -1,18 +1,19 @@
 package main
 
 import (
-    "fmt"
-    "log"
-    "net/http"
-    "os"
+        "fmt"
+        "log"
+        "net/http"
+        "os"
 	"math/rand"
 	"time"
 	"strconv"
-    "regexp"
+    	"regexp"
 	"bufio"
-    "io"
+        "io"
 	"strings"
 )
+
 
 
 func parseUrl(file string) map[string]string {
