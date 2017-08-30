@@ -1,0 +1,13 @@
+package main
+
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+
+    var chs1 = make(chan int)
+
+}

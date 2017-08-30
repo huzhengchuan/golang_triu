@@ -1,0 +1,15 @@
+package main
+
+import (
+    "sets"
+)
+
+var disablecontroller = sets.NewString(
+    "bootstrapsigner",
+    "tokencleaner",
+)
+
+func main() {
+
+    fmt.Println(disablecontroller.List())
+}
